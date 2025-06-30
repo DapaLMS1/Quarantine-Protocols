@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarantine Protocol Case Study</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #F2F2F2; /* Light Gray */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .flip-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px; /* Adjust as needed for responsiveness */
+            width: 100%; /* Ensure it takes full width within its container */
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 400px; /* Increased width as requested */
+            height: 500px; /* Adjusted height for better content display with new width */
+            perspective: 1000px;
+            cursor: pointer;
+            border-radius: 10px; /* Rounded corners for the card itself */
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            border-radius: 10px; /* Rounded corners for the inner container */
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px; /* Rounded corners for front and back */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px; /* Reduced padding as requested */
+            box-sizing: border-box;
+            word-wrap: break-word; /* Ensure text wraps */
+            text-align: left; /* Changed to left alignment for all content */
+        }
+
+        .flip-card-front {
+            background-color: #532A8C; /* Dark Purple */
+            color: #F2F2F2;
+        }
+
+        .flip-card-front h3 {
+            color: #F2F2F2; /* Changed heading color to white */
+            margin-bottom: 15px;
+            text-align: left; /* Ensure heading is left-aligned */
+            width: 100%; /* Ensure heading takes full width for alignment */
+        }
+
+        .flip-card-front p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            padding: 0 10px; /* Add some padding for text */
+            text-align: left; /* Ensure paragraph is left-aligned */
+            width: 100%; /* Ensure paragraph takes full width for alignment */
+        }
+
+        .flip-card-back {
+            background-color: #9D8ABB; /* Muted Purple */
+            color: #532A8C;
+            transform: rotateY(180deg);
+            text-align: left; /* Align text to left for lists */
+        }
+
+        .flip-card-back h3 {
+            color: #532A8C; /* Dark Purple */
+            margin-bottom: 15px;
+            text-align: left; /* Changed heading to left alignment */
+            width: 100%; /* Ensure heading takes full width for alignment */
+        }
+
+        .flip-card-back h4 {
+            color: #532A8C;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: left; /* Changed subheading to left alignment */
+            width: 100%; /* Ensure subheading takes full width for alignment */
+        }
+
+        .flip-card-back ul {
+            list-style-type: disc;
+            margin: 0 20px; /* Adjust margin for list */
+            padding-left: 0;
+            width: calc(100% - 40px); /* Adjust width to fit padding */
+            text-align: left; /* Ensure list is left-aligned */
+        }
+
+        .flip-card-back ul li {
+            margin-bottom: 10px;
+            font-size: 1em;
+            text-align: left; /* Ensure list items are left-aligned */
+        }
+
+        .flip-card-back .outcome {
+            margin-top: 15px;
+            /* Removed font-weight: bold; */
+            color: #333333; /* Changed outcome text color to dark grey */
+            text-align: left; /* Changed outcome text to left alignment */
+            padding: 0 10px; /* Add padding for outcome text */
+            width: 100%; /* Ensure outcome takes full width for alignment */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .flip-card {
+                width: 90%; /* Make card wider on smaller screens */
+                height: 450px; /* Adjust height for smaller screens */
+            }
+            .flip-card-front p, .flip-card-back ul li, .flip-card-back .outcome {
+                font-size: 0.95em; /* Slightly smaller font for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flip-card {
+                width: 100%; /* Full width on very small screens */
+                height: 420px; /* Further adjust height */
+            }
+            .flip-card-front p, .flip-card-back ul li, .flip-card-back .outcome {
+                font-size: 0.9em; /* Even smaller font for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flip-card-container">
+        <!-- Card 1: Problem -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h3>Following quarantine processes</h3>
+                    <p>A dental practice had an emergency patient present with an "unknown neurological condition under investigation." Instruments used on this patient came into contact with blood.</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Action Taken & Outcome</h3>
+                    <h4>Action Taken:</h4>
+                    <ul>
+                        <li>All instruments used were immediately quarantined in a separate, labelled, sealed container.</li>
+                        <li>These instruments were processed separately from regular loads.</li>
+                        <li>The practice engaged an external facility for specialised decontamination, considering microorganisms resistant to typical steam sterilisation.</li>
+                        <li>A detailed incident report was completed, and relevant staff were briefed.</li>
+                    </ul>
+                    <p class="outcome">**Outcome:** While a high-risk condition was not confirmed, the prompt and correct action effectively mitigated any potential cross-contamination risk, upholding high safety standards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
