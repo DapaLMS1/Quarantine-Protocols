@@ -32,7 +32,6 @@
             width: 400px; /* Increased width as requested */
             height: 500px; /* Adjusted height for better content display with new width */
             perspective: 1000px;
-            cursor: pointer;
             border-radius: 10px; /* Rounded corners for the card itself */
         }
 
@@ -47,7 +46,7 @@
             border-radius: 10px; /* Rounded corners for the inner container */
         }
 
-        .flip-card:hover .flip-card-inner {
+        .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
 
@@ -89,25 +88,31 @@
         }
 
         .flip-card-back {
-            background-color: #9D8ABB; /* Muted Purple */
-            color: #532A8C;
+            background-color: #7ABF49; /* Changed background to green */
+            color: #000000; /* Changed text color to black for all elements on flip side */
             transform: rotateY(180deg);
             text-align: left; /* Align text to left for lists */
+            display: flex; /* Ensure flexbox for vertical alignment */
+            flex-direction: column; /* Stack content vertically */
+            justify-content: flex-start; /* Align content to the top */
+            padding-top: 30px; /* Add padding to the top for better spacing */
         }
 
         .flip-card-back h3 {
-            color: #532A8C; /* Dark Purple */
+            color: #000000; /* Changed heading to black */
             margin-bottom: 15px;
             text-align: left; /* Changed heading to left alignment */
             width: 100%; /* Ensure heading takes full width for alignment */
+            padding: 0 10px; /* Add padding for text */
         }
 
         .flip-card-back h4 {
-            color: #532A8C;
+            color: #000000; /* Changed subheading to black */
             margin-top: 0;
             margin-bottom: 10px;
             text-align: left; /* Changed subheading to left alignment */
             width: 100%; /* Ensure subheading takes full width for alignment */
+            padding: 0 10px; /* Add padding for text */
         }
 
         .flip-card-back ul {
@@ -122,15 +127,48 @@
             margin-bottom: 10px;
             font-size: 1em;
             text-align: left; /* Ensure list items are left-aligned */
+            color: #000000; /* Changed list item text color to black */
         }
 
-        .flip-card-back .outcome {
-            margin-top: 15px;
-            /* Removed font-weight: bold; */
-            color: #333333; /* Changed outcome text color to dark grey */
+        .flip-card-back .outcome-heading { /* New class for outcome heading */
+            font-weight: bold; /* Make outcome heading bold */
+            color: #000000; /* Outcome heading color to black */
+            margin-top: 15px; /* Space above outcome heading */
+            margin-bottom: 10px; /* Space below outcome heading */
+            text-align: left;
+            padding: 0 10px;
+            width: 100%;
+        }
+
+        .flip-card-back .outcome-text { /* New class for outcome text */
+            color: #000000; /* Outcome text color to black */
             text-align: left; /* Changed outcome text to left alignment */
             padding: 0 10px; /* Add padding for outcome text */
             width: 100%; /* Ensure outcome takes full width for alignment */
+            margin-top: 0; /* Remove default paragraph margin */
+        }
+
+        .flip-button {
+            background-color: #C3ACE8; /* Light purple for button */
+            color: #532A8C; /* Dark purple text for button */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px; /* Space above the button */
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .flip-button:hover {
+            background-color: #9D8ABB; /* Muted purple on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        .flip-button:active {
+            transform: translateY(0); /* Press down effect */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         /* Responsive adjustments */
@@ -139,7 +177,7 @@
                 width: 90%; /* Make card wider on smaller screens */
                 height: 450px; /* Adjust height for smaller screens */
             }
-            .flip-card-front p, .flip-card-back ul li, .flip-card-back .outcome {
+            .flip-card-front p, .flip-card-back ul li, .flip-card-back .outcome-text {
                 font-size: 0.95em; /* Slightly smaller font for mobile */
             }
         }
@@ -149,7 +187,7 @@
                 width: 100%; /* Full width on very small screens */
                 height: 420px; /* Further adjust height */
             }
-            .flip-card-front p, .flip-card-back ul li, .flip-card-back .outcome {
+            .flip-card-front p, .flip-card-back ul li, .flip-card-back .outcome-text {
                 font-size: 0.9em; /* Even smaller font for very small screens */
             }
         }
@@ -159,11 +197,12 @@
 
     <div class="flip-card-container">
         <!-- Card 1: Problem -->
-        <div class="flip-card">
+        <div class="flip-card" id="myFlipCard">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <h3>Following quarantine processes</h3>
                     <p>A dental practice had an emergency patient present with an "unknown neurological condition under investigation." Instruments used on this patient came into contact with blood.</p>
+                    <button class="flip-button" onclick="flipCard()">Flip Card</button>
                 </div>
                 <div class="flip-card-back">
                     <h3>Action Taken & Outcome</h3>
@@ -174,11 +213,21 @@
                         <li>The practice engaged an external facility for specialised decontamination, considering microorganisms resistant to typical steam sterilisation.</li>
                         <li>A detailed incident report was completed, and relevant staff were briefed.</li>
                     </ul>
-                    <p class="outcome">**Outcome:** While a high-risk condition was not confirmed, the prompt and correct action effectively mitigated any potential cross-contamination risk, upholding high safety standards.</p>
+                    <h4 class="outcome-heading">Outcome:</h4>
+                    <p class="outcome-text">While a high-risk condition was not confirmed, the prompt and correct action effectively mitigated any potential cross-contamination risk, upholding high safety standards.</p>
+                    <button class="flip-button" onclick="flipCard()">Go Back</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        function flipCard() {
+            const card = document.getElementById('myFlipCard');
+            card.classList.toggle('flipped');
+        }
+    </script>
+
 </body>
 </html>
+
